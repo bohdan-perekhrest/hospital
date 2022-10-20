@@ -1,0 +1,57 @@
+name: "Main"
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Running fasterer
+        run: bundle exec fasterer
+      - name: Running rails-best-practices
+        run: bundle exec rails_best_practices .
+      - name: Running rubocop
+        run: bundle exec rubocop -P --format=emacs --display-cop-names
+
+  test:
+    runs-on: ubuntu-20.04
+    needs: [lint]
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_DB: hospital_development
+          POSTGRES_USER: hospital
+          POSTGRES_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          PG_USER: hospital
+          PG_PASSWORD: password
+          DB_HOST: localhost
+        run: |
+          bin/rails db:create RAILS_ENV=test
+          bin/rails db:schema:load
+          bundle exec rspec
+
+  
