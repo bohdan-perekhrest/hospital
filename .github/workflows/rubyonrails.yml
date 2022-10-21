@@ -14,8 +14,6 @@ jobs:
           bundler-cache: true
       - name: Running fasterer
         run: bundle exec fasterer
-      - name: Running rails-best-practices
-        run: bundle exec rails_best_practices .
       - name: Running rubocop
         run: bundle exec rubocop -P --format=emacs --display-cop-names
 

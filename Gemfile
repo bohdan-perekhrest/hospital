@@ -26,7 +26,6 @@ group :development, :test do
   gem 'ffaker', '~> 2.21'
   gem 'lefthook', '~> 1.1.1', require: false
   gem 'pry-byebug', '~> 3.9'
-  gem 'rails_best_practices', '~> 1.23', require: false
   gem 'rspec', '~> 3.11.0'
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'rubocop', '~> 1.32.0', require: false
