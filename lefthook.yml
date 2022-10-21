@@ -16,9 +16,6 @@ pre-commit:
     fasterer:
       run: |
         bundle exec fasterer
-    rails_best_practices:
-      run: |
-        bundle exec rails_best_practices
 default: &default
   commands:
     bundle:
@@ -39,9 +36,6 @@ all:
     fasterer:
       run: |
         bundle exec fasterer
-    rails_best_practices:
-      run: |
-        bundle exec rails_best_practices
     rubocop:
       glob: "*.rb"
       run: |

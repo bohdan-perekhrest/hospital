@@ -27,6 +27,12 @@ Style/ParallelAssignment:
 
 Layout/LineLength:
   Max: 100
+  Exclude:
+    - config/**/*.rb
+
+Lint/EmptyBlock:
+  Exclude:
+    - spec/factories/*.rb
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
