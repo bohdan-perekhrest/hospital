@@ -17,11 +17,15 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'brakeman', '~> 5.3.1', require: false
+  gem 'capybara'
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'fasterer', '~> 0.10.0', require: false
+  gem 'ffaker', '~> 2.21'
   gem 'lefthook', '~> 1.1.1', require: false
   gem 'pry-byebug', '~> 3.9'
   gem 'rails_best_practices', '~> 1.23', require: false
   gem 'rspec', '~> 3.11.0'
+  gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'rubocop', '~> 1.32.0', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.15', require: false
