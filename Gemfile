@@ -15,7 +15,10 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'devise', '~> 4.8', '>= 4.8.1'
+
 group :development, :test do
+  gem 'annotate', '~> 3.2'
   gem 'brakeman', '~> 5.3.1', require: false
   gem 'capybara'
   gem 'factory_bot_rails', '~> 6.2'
